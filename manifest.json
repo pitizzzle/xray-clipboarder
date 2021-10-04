@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Xray Clipboarder",
     "description": "Scrape the webs contents without restrictions ♡",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "icons": {
         "256": "img/icon_256.png"
     },
@@ -17,7 +17,7 @@
             "js": [
                 "content-script/main.js"
             ],
-            "all_frames": false
+            "all_frames": true
         }
     ],
     "browser_action": {
