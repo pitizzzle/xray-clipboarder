@@ -10,9 +10,9 @@ This extension currently only works in the **Chrome** browser.
 
 It is not distributed via the Chrome Web Store. For now, you have to download it manually.
 
-+ Go to the [Releases](https://github.com/pitizzzle/xray-clipboarder/releases) page, and find the newest release.
++ Go to the [Releases](https://github.com/pitizzzle/xray-clipboarder/releases) page, and find the newest release (at the top).
 
-+ Download the "Source code (zip)", and extract the contained files.
++ Download the asset "Source code (zip)", and extract the contained files.
 
 + Open Chrome, and navigate to the settings ([chrome://extensions](chrome://extensions/)).
 
