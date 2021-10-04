@@ -1,0 +1,86 @@
+/* DEFAULTS */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(MontserratRegular-latin.woff2);
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* POPUP */
+:root {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: black;
+  text-shadow: 0 0.75px 1.5px rgba(0, 0, 0, 0.25);
+}
+
+body {
+  width: 220px;
+  height: 220px;
+  font: inherit;
+  background-image: radial-gradient(#c0c0c0 1.5px, transparent 1.5px);
+  background-position: 0 0;
+  background-size: 20px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+body button {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
+  background-color: white;
+  background-image: url("icon.svg");
+  background-position: center center;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+body button:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+body button.check {
+  background-image: url("check.svg");
+}
+
+body button.cross {
+  background-image: url("cross.svg");
+}
+/*# sourceMappingURL=styles.css.map */
