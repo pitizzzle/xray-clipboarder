@@ -36,22 +36,37 @@
 }
 
 body {
-    width: 220px; // to prevent collapse of popup window
-    height: 220px;
+    width: 350px;   // to prevent collapse of popup window
+    height: 280px;  //
 
     font: inherit; // override auto-injected stylesheet from chrome xD
-    
-    background-image: radial-gradient(#c0c0c0 1.5px, transparent 1.5px);
+
+    background-image: radial-gradient(#d2d2d2 1.5px, transparent 1.5px);
     background-position: 0 0;
     background-size: 20px 20px;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    // for absolutely positioned child 'div#ray-container'
     position: relative;
 
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+
+    div.slogan, button {
+        margin: 14px 0;
+    }
+    div.slogan {
+        font-size: 24px;
+        letter-spacing: 0.5em;
+        text-align: center;
+        transition: opacity 5s; // slow fade-in
+        &.hidden {
+            transition: opacity 0.5s; // quick fade-out
+            opacity: 0;
+        }
+    }
     button {
-        position: absolute;
         width: 64px;
         height: 64px;
         border-radius: 4px;
@@ -65,6 +80,7 @@ body {
 
         &:hover {
             cursor: pointer;
+            transition-delay: 0.05s; // wait for the rays to slide into the viewport :p
             transform: scale(1.2);
         }
 
@@ -74,6 +90,57 @@ body {
 
         &.cross {
             background-image: url('cross.svg');
+        }
+    }
+
+    // container primarily exists for 'overflow: hidden' (which does not seem to work on body element)
+    div#ray-container {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+        .ray {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 500px;
+            height: 4px;
+            background-color: black;
+
+            /* RAY LIFECYCLE:
+                - (1/3) initial/default state outside the viewport
+                - (2/3) hovered state: rays slide into the viewport
+                - hovered rays can either return to initial state (1), or progress to their final state (3)
+                - (3) clicked state: final state outside the viewport, so that rays swipe out perpendicular to their axis
+                - after reaching their final state, rays are disposed
+            */
+
+            &.ray-A {
+                transition: transform 0.4s;
+                transform: translate(-50%, -50%) rotate(-45deg) translateX(-500px);
+                &.mode-hovered {
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                }
+                &.mode-clicked {
+                    transition: transform 0.6s linear;
+                    transform: translate(-50%, -50%) rotate(-45deg) translateY(500px);
+                }
+            }
+            &.ray-B {
+                transition: transform 0.4s;
+                transform: translate(-50%, -50%) rotate(-45deg) translateX(500px);
+                &.mode-hovered {
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                }
+                &.mode-clicked {
+                    transition: transform 0.6s linear;
+                    transform: translate(-50%, -50%) rotate(-45deg) translateY(-500px);
+                }
+            }
         }
     }
 }

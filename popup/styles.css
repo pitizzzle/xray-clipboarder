@@ -34,26 +34,47 @@
 }
 
 body {
-  width: 220px;
-  height: 220px;
+  width: 350px;
+  height: 280px;
   font: inherit;
-  background-image: radial-gradient(#c0c0c0 1.5px, transparent 1.5px);
+  background-image: radial-gradient(#d2d2d2 1.5px, transparent 1.5px);
   background-position: 0 0;
   background-size: 20px 20px;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  position: relative;
+}
+
+body div.slogan, body button {
+  margin: 14px 0;
+}
+
+body div.slogan {
+  font-size: 24px;
+  letter-spacing: 0.5em;
+  text-align: center;
+  -webkit-transition: opacity 5s;
+  transition: opacity 5s;
+}
+
+body div.slogan.hidden {
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  opacity: 0;
 }
 
 body button {
-  position: absolute;
   width: 64px;
   height: 64px;
   border-radius: 4px;
@@ -72,6 +93,8 @@ body button {
 
 body button:hover {
   cursor: pointer;
+  -webkit-transition-delay: 0.05s;
+          transition-delay: 0.05s;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
 }
@@ -82,5 +105,77 @@ body button.check {
 
 body button.cross {
   background-image: url("cross.svg");
+}
+
+body div#ray-container {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+body div#ray-container .ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 4px;
+  background-color: black;
+  /* RAY LIFECYCLE:
+                - (1/3) initial/default state outside the viewport
+                - (2/3) hovered state: rays slide into the viewport
+                - hovered rays can either return to initial state (1), or progress to their final state (3)
+                - (3) clicked state: final state outside the viewport, so that rays swipe out perpendicular to their axis
+                - after reaching their final state, rays are disposed
+            */
+}
+
+body div#ray-container .ray.ray-A {
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg) translateX(-500px);
+          transform: translate(-50%, -50%) rotate(-45deg) translateX(-500px);
+}
+
+body div#ray-container .ray.ray-A.mode-hovered {
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+          transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+body div#ray-container .ray.ray-A.mode-clicked {
+  -webkit-transition: -webkit-transform 0.6s linear;
+  transition: -webkit-transform 0.6s linear;
+  transition: transform 0.6s linear;
+  transition: transform 0.6s linear, -webkit-transform 0.6s linear;
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg) translateY(500px);
+          transform: translate(-50%, -50%) rotate(-45deg) translateY(500px);
+}
+
+body div#ray-container .ray.ray-B {
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg) translateX(500px);
+          transform: translate(-50%, -50%) rotate(-45deg) translateX(500px);
+}
+
+body div#ray-container .ray.ray-B.mode-hovered {
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+          transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+body div#ray-container .ray.ray-B.mode-clicked {
+  -webkit-transition: -webkit-transform 0.6s linear;
+  transition: -webkit-transform 0.6s linear;
+  transition: transform 0.6s linear;
+  transition: transform 0.6s linear, -webkit-transform 0.6s linear;
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg) translateY(-500px);
+          transform: translate(-50%, -50%) rotate(-45deg) translateY(-500px);
 }
 /*# sourceMappingURL=styles.css.map */
