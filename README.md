@@ -1,7 +1,7 @@
 # X-Ray Clipboarder
 A lightweight chrome extension to scrape the web's contents without restrictions ♡
 
-This proves to be very handy if the website you're on tries to prevent you from copying text.
+This proves to be very handy if the website you are on tries to prevent you from copying text by blocking the `Ctrl`+`C` keyboard shortcut.
 
 <br>
 
